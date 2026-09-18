@@ -1,0 +1,16 @@
+# Build context for the example Dockerfiles.
+# Without these entries, `COPY . .` bakes source history, vendored dependencies
+# and local credentials into the image.
+.git
+.gitignore
+.github
+node_modules
+.env
+.env.*
+.venv
+__pycache__
+*.pyc
+*.log
+coverage
+.idea
+.vscode

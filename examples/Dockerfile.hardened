@@ -1,0 +1,32 @@
+# A hardened multi-stage Dockerfile: this file is the "good" example and is used
+# as the negative control in the test suite (see tests/fixtures.py, GOOD).
+# `python3 -m dockerfile_audit examples/Dockerfile.hardened` reports zero findings.
+
+# ---- build stage: everything needed to compile, nothing needed to run -------
+FROM node:20.11.1-alpine3.19 AS build
+WORKDIR /build
+# Manifests first, so the (slow) dependency layer is only rebuilt when the
+# dependencies actually change - not on every source edit.
+COPY package.json package-lock.json ./
+RUN npm ci --omit=dev
+COPY src/ ./src/
+RUN npm run build
+
+# ---- runtime stage: a pinned slim base, an unprivileged user, a healthcheck --
+FROM node:20.11.1-alpine3.19
+# tini reaps zombies and forwards signals; the account is what the app runs as.
+RUN apk add --no-cache tini \
+    && addgroup -S app \
+    && adduser -S -G app app
+WORKDIR /app
+COPY --from=build --chown=app:app /build/dist ./dist
+COPY --from=build --chown=app:app /build/node_modules ./node_modules
+COPY --chown=app:app package.json ./
+ENV NODE_ENV=production
+# Never run as root: uid 0 in the container is uid 0 on the host kernel.
+USER app
+EXPOSE 3000
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD ["node", "dist/healthcheck.js"]
+ENTRYPOINT ["/sbin/tini", "--"]
+CMD ["node", "dist/server.js"]

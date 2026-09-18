@@ -1,0 +1,16 @@
+# A deliberately terrible Dockerfile: this file is the "bad" example and is used
+# as the negative control in the test suite (see tests/fixtures.py, BAD).
+# `python3 -m dockerfile_audit examples/Dockerfile.insecure` should report a
+# dozen findings, two of them high.  Nothing in here is a real credential.
+FROM node:latest
+ENV NPM_TOKEN=example-token-1234
+ARG DB_PASSWORD=CHANGEME
+WORKDIR /app
+# Copies the whole context (including .git) before installing dependencies, so
+# every source edit invalidates the dependency layer.
+COPY . .
+RUN npm install
+RUN apt-get update && apt-get install -y curl
+ADD app.py /app/
+RUN curl -fsSL https://example.com/install.sh | bash
+CMD ["node", "server.js"]
