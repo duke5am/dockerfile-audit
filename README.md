@@ -345,4 +345,4 @@ SOFTWARE.
 
 ---
 
-→ **Docker & Image Hardening Pack**: <!-- GUMROAD-LINK -->
+→ **[Docker & Image Hardening Pack](https://duke5am.gumroad.com/l/15-docker-hardening)** — $24 on Gumroad <!-- GUMROAD-LINK -->
