@@ -344,4 +344,25 @@ SOFTWARE.
 
 ---
 
+<!-- RELATED:START -->
+
+## Related tools
+
+- **[actions-audit](https://github.com/duke5am/actions-audit)** — Audit GitHub Actions workflows for supply chain risk: unpinned actions, script injection, pull_request_target, missing permissions and timeouts.
+  *(if you were searching for "github actions security audit")*
+- **[eslint-architecture-rules](https://github.com/duke5am/eslint-architecture-rules)** — ESLint rules that fail CI when architecture boundaries erode: layer and feature imports, public entry points, hermetic tests, console in libraries.
+  *(if you were searching for "eslint architecture boundaries")*
+- **[feature-flag-codemods](https://github.com/duke5am/feature-flag-codemods)** — Remove feature flags that are fully rolled out, and refuse any flag that cannot be proven safe to delete. Byte-level proof untouched code stays untouched.
+  *(if you were searching for "remove stale feature flags")*
+- **[playwright-flaky-test-classifier](https://github.com/duke5am/playwright-flaky-test-classifier)** — Turn Playwright's flaky label into a ranked cause: parse JSON run reports and classify each flaky test as timing, ordering, network or test-data.
+  *(if you were searching for "playwright flaky tests")*
+- **[pr-review-lint](https://github.com/duke5am/pr-review-lint)** — First-pass pull request review driven by your own markdown rules, with a dry-run that shows exactly what it would post before it posts anything.
+  *(if you were searching for "automate pr review")*
+
+All 28 tools in this set, grouped by what they check: **[dev-tools-index](https://duke5am.github.io/dev-tools-index/)**
+
+If you arrived here searching for one of these, this is the tool: **dockerfile security check** · **dockerfile best practices linter** · **container runs as root** · **docker image hardening**
+
+<!-- RELATED:END -->
+
 → **[Docker & Image Hardening Pack](https://duke5am.gumroad.com/l/15-docker-hardening)** — $24 on Gumroad <!-- GUMROAD-LINK -->
