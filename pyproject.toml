@@ -26,7 +26,7 @@ dependencies = []
 dockerfile-audit = "dockerfile_audit.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/duke5am/dockerfile-audit"
+Homepage = "https://github.com/duke5am/dockerfile-hardening-lint"
 
 [tool.setuptools]
 packages = ["dockerfile_audit"]

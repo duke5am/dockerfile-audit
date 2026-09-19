@@ -1,5 +1,4 @@
-# dockerfile-audit
-
+# dockerfile-hardening-lint
 A small, dependency-free Dockerfile linter. It reads Dockerfiles as **text** and
 reports concrete problems: a container that will run as root, credentials baked
 into `ENV`/`ARG`, floating base images, apt cache left in a layer, a `RUN` in a
